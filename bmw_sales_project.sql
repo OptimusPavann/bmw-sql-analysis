@@ -492,25 +492,90 @@ FROM (
 ) T
 WHERE rnk = 1;
 
-
-
-
-
-
-
-
-
---PART 5 — Subquery Problems (36–40)--
+      --PART 5 — Subquery Problems (36–40)--
 
 /* 36. Find vehicles whose price is greater than the overall average price. */
+SELECT
+	model,
+	price_usd
+FROM bmw_sales
+WHERE price_usd >(
+	SELECT
+		AVG(CAST(price_usd AS BIGINT)) AS avg_price
+	FROM bmw_sales
+)
+
+----------------------------------------------------------------------------------------------------------
 
 /* 37. Find models whose sales volume is higher than the average sales volume. */
 
+SELECT
+	model,
+	SUM(sales_volume) AS total_sales_volume
+FROM bmw_sales
+GROUP BY model
+HAVING SUM(sales_volume) > (
+	SELECT AVG(sales_volume)
+	FROM bmw_sales
+);
+
+------------------------------------------------------------------------------------------------------
+
 /* 38. Find the model with the highest sales volume. */
+
+SELECT TOP 1 WITH TIES 
+	model,
+	SUM(sales_volume) AS total_sales_volume
+FROM bmw_sales
+GROUP BY model
+ORDER BY total_sales_volume DESC
+----------------------------------------------------------------------------------------------------
 
 /* 39. Find vehicles whose engine size is above the average engine size. */
 
+SELECT 
+	model,
+	engine_size_l
+FROM bmw_sales
+WHERE engine_size_l > (
+	SELECT AVG(engine_size_l)
+	FROM bmw_sales
+);
+
+	---------------------------------------------------------------------------------------------------------
 /* 40. Find the region with the highest total sales volume using a subquery. */
+
+SELECT
+	region,
+	total_sales_volume
+FROM (
+	SELECT
+		region,
+		SUM(sales_volume) AS total_sales_volume
+	FROM bmw_sales
+	GROUP BY region
+) T
+WHERE total_sales_volume = (
+	SELECT MAX(total_sales_volume)
+	FROM (
+		SELECT
+			region,
+			SUM(sales_volume) AS total_sales_volume
+		FROM bmw_sales
+		GROUP BY region
+	) X
+);
+
+-- simplest way 
+SELECT TOP 1
+	region,
+	SUM(sales_volume) AS total_sales_volume
+FROM bmw_sales
+GROUP BY region
+ORDER BY total_sales_volume DESC;
+
+---------------------------------------------------------------------------------------------------------------
+
 
       --PART 6 — Window Function Problems (41–45)--
 
