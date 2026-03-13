@@ -23,7 +23,7 @@ This project analyzes a BMW vehicle sales dataset using SQL.
 - Business Analysis Queries
 
 ## Project Progress
-✔ 40 SQL business problems solved  
+✔ 45 SQL business problems solved  
 ✔ More queries will be added
 
 ## Author
