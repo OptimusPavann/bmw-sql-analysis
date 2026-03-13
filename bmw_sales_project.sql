@@ -576,19 +576,80 @@ ORDER BY total_sales_volume DESC;
 
 ---------------------------------------------------------------------------------------------------------------
 
-
       --PART 6 — Window Function Problems (41–45)--
 
 /* 41. Rank BMW models by sales volume. */
+SELECT
+	model,
+	SUM(sales_volume) AS total_sales_volume,
+	RANK() OVER(ORDER BY SUM(sales_volume) DESC) AS sales_rank
+	--RANK() OVER()
+FROM bmw_sales
+GROUP BY model
+
+---------------------------------------------------------------------------------------------------------
 
 /* 42. Find the top 3 most expensive vehicles in each region. */
 
+SELECT
+	region,
+	model,
+	price_usd
+FROM(
+	SELECT
+		region,
+		model,
+		price_usd,
+		DENSE_RANK() OVER(PARTITION BY region ORDER BY price_usd DESC) AS rnk
+	FROM bmw_sales
+)T
+WHERE rnk <=3
+
+--------------------------------------------------------------------------------------------------
+
 /* 43. Calculate running total of sales volume by year. */
+SELECT
+    year,
+    SUM(sales_volume) AS yearly_sales,
+    SUM(SUM(sales_volume)) OVER (
+        ORDER BY year
+    ) AS running_total_sales
+FROM bmw_sales
+GROUP BY year
+ORDER BY year;
+
+-----------------------------------------------------------------------------------------------------------
 
 /* 44. Find the highest priced car per model. */
 
-/* 45. Calculate average price per region using window function. */
+SELECT
+    model,
+    price_usd
+FROM (
+    SELECT
+        model,
+        price_usd,
+        ROW_NUMBER() OVER (
+            PARTITION BY model
+            ORDER BY price_usd DESC
+        ) AS rn
+    FROM bmw_sales
+) t
+WHERE rn = 1;
 
+-------------------------------------------------------------------------------------------------------
+
+/* 45. Calculate average price per region using window function. */
+SELECT
+    region,
+    model,
+    price_usd,
+    AVG(price_usd) OVER (
+        PARTITION BY region
+    ) AS avg_region_price
+FROM bmw_sales;
+
+-----------------------------------------------------------------------------------------------------
  --PART 7 — CTE Based Business Problems (46–50)--
 
 /* 46. Using CTE, find top 5 regions by total sales volume. */
