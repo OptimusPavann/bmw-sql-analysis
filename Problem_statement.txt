@@ -1,0 +1,120 @@
+BMW Sales Analytics Project
+Problem Statement
+
+BMW wants to analyze its global vehicle sales performance across multiple regions from 2010–2024.
+The company wants to understand:
+
+
+PART 1 — Basic SQL Business Questions (1–10)
+
+1. How many total records exist in the dataset?
+
+2. What are the distinct BMW models available?
+
+3. How many unique regions are present in the dataset?
+
+4. What are the different transmission types available?
+
+5. How many vehicles are there for each fuel type?
+
+6. What is the minimum and maximum vehicle price?
+
+7. What is the average engine size of vehicles?
+
+8. What is the average mileage of vehicles?
+
+9. How many vehicles are sold in each sales classification (High / Low)?
+
+10. How many cars were produced each year?
+
+PART 2 — Aggregation Analysis (11–20)
+
+11. What is the total sales volume for all BMW vehicles?
+
+12. What is the average price of vehicles per model?
+
+13. Which region has the highest sales volume?
+
+14. What is the total sales volume per region?
+
+15. What is the average mileage per model?
+
+16. Which model has the highest average price?
+
+17. What is the average engine size per fuel type?
+
+18. Which year recorded the highest sales volume?
+
+19. What is the total number of vehicles sold per transmission type?
+
+20. Which color appears most frequently in the dataset?
+
+PART 3 — GROUP BY + HAVING (21–30)
+
+21. Which models have average price greater than $70,000?
+
+22. Which regions have total sales volume greater than 50,000?
+
+23. Which models sold more than 20,000 units?
+
+34. Find models with average mileage greater than 80,000 km.
+
+25. Which years have average price greater than overall average price?
+
+26. Find fuel types that appear more than 5,000 times.
+
+27. Which models have engine size greater than 3L on average?
+
+28. Which regions have average sales volume greater than 6000?
+
+29. Find models with maximum price above $100,000.
+
+30. Which transmission type has highest total sales volume?
+
+PART 4 — Intermediate Business Problems (31–35)
+
+31. Find the top 5 most sold BMW models.
+
+32. Which region has the highest average vehicle price?
+
+33. Find the least selling BMW model.
+
+34. Find the average price difference between Automatic and Manual transmission cars.
+
+35. Identify the most common model in each region.
+
+PART 5 — Subquery Problems (36–40)
+
+36. Find vehicles whose price is greater than the overall average price.
+
+37. Find models whose sales volume is higher than the average sales volume.
+
+38. Find the model with the highest sales volume.
+
+39. Find vehicles whose engine size is above the average engine size.
+
+40. Find the region with the highest total sales volume using a subquery.
+
+PART 6 — Window Function Problems (41–45)
+
+41. Rank BMW models by sales volume.
+
+42. Find the top 3 most expensive vehicles in each region.
+
+43. Calculate running total of sales volume by year.
+
+44. Find the highest priced car per model.
+
+45. Calculate average price per region using window function.
+
+PART 7 — CTE Based Business Problems (46–50)
+
+46. Using CTE, find top 5 regions by total sales volume.
+
+47. Using CTE, calculate average price per model and filter models above average.
+
+48. Using CTE, rank models by sales volume and show top models per region.
+
+49. Using CTE, find vehicles with price above regional average price.
+
+50. Using CTE + window function, find top selling model each year.
