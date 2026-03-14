@@ -121,4 +121,4 @@ This project demonstrates practical SQL skills used in real-world data analysis,
 
 **Optimus Pavann**
 
-Aspiring Data Analyst / Data Engineer focusing on SQL, data analytics, and data engineering concepts.
+Experienced Data Analyst / Data Engineer focusing on SQL, data analytics, and data engineering concepts.
