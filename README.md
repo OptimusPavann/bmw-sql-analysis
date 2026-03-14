@@ -11,6 +11,7 @@ The project covers multiple SQL concepts ranging from basic queries to advanced 
 ## Dataset Description
 
 The dataset contains information about BMW vehicle sales across different regions and years.
+This dataset contains 50000 rows
 
 **Columns included:**
 
